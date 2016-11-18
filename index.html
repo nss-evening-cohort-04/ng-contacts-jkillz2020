@@ -8,10 +8,10 @@
   <title>Address Book App</title>
 </head>
 <body ng-app="AddressApp">
-  <h1 class="main-title col-md-4 col-md-offset-5">Address Book App</h1>
+  <h1 class="main-title col-md-6 col-md-offset-5">Address Book App</h1>
 <div ng-controller="ContactsCtrl">
-  <div><button class="btn btn-success col-md-4 col-md-offset-1" ng-click="allContacts()">View All Contacts</button></div>
-  <div><button class="btn btn-info col-md-4 col-md-offset-2" ng-click="newContact()">Add New Contact</button></div>
+  <div><button class="btn btn-success col-md-4 col-md-offset-1" id="view-all" ng-click="allContacts()">View All Contacts</button></div>
+  <div><button class="btn btn-info col-md-4 col-md-offset-2" id="add-new" ng-click="newContact()">Add New Contact</button></div>
 <div ng-show="!showContactsView">
   <form>
 
@@ -29,11 +29,6 @@
         <label for="street1_id" class="control-label">Street Address 1</label>
         <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, company name, c/o" ng-model="newContact.streetAddress">
       </div>          
-
-      <div class="form-group col-md-10 col-md-offset-1"> <!-- Street 2 -->
-        <label for="street2_id" class="control-label">Street Address 2</label>
-        <input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc.">
-      </div>  
 
       <div class="form-group col-md-3 col-md-offset-1"> <!-- City-->
         <label for="city_id" class="control-label">City</label>
@@ -121,15 +116,16 @@
 
   <div ng-show="showContactsView" ng-repeat="contact in contacts">
     <!-- <h3>My Contacts</h3> -->
-
-    <div class="col-md-3">{{contact.firstName}}</div>
-    <div class="col-md-3">{{contact.lastName}}</div>
-    <div class="col-md-3">{{contact.streetAddress}}</div>
-    <div class="col-md-3">{{contact.city}}</div>
-    <div class="col-md-3">{{contact.state}}</div>
-    <div class="col-md-3">{{contact.zipcode}}</div>
-    <div class="col-md-3">{{contact.phone}}</div>
-    <div class="col-md-3">{{contact.email}}</div>
+    <div class="col-md-3 col-md-offset-1">
+    <div class="row">{{contact.firstName}}</div>
+    <div class="row">{{contact.lastName}}</div>
+    <div class="row">{{contact.streetAddress}}</div>
+    <div class="row">{{contact.city}}</div>
+    <div class="row">{{contact.state}}</div>
+    <div class="row">{{contact.zipcode}}</div>
+    <div class="row">{{contact.phone}}</div>
+    <div class="row">{{contact.email}}</div>
+    </div>
   </div>
 </div>
 
