@@ -5,6 +5,7 @@
       "lastName": "Tatum",
       "streetAddress": "500 South Street",
       "city": "Nashville",
+      "state": "Tennessee",
       "zipcode": "55555",
       "phone": "123-456-7890",
       "email": "t@t.com"
@@ -14,6 +15,7 @@
       "lastName": "Van Zant",
       "streetAddress": "500 North Street",
       "city": "Nashville",
+      "state": "Tennessee",
       "zipcode": "55577",
       "phone": "123-456-5555",
       "email": "b@z.com"
@@ -23,6 +25,7 @@
       "lastName": "Kilby",
       "streetAddress": "500 West Street",
       "city": "Nashville",
+      "state": "Tennessee",
       "zipcode": "55566",
       "phone": "123-555-7590",
       "email": "j@j.com"

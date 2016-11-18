@@ -7,120 +7,141 @@
   <link rel="stylesheet" type="text/css" href="styles/main.css">
   <title>Address Book App</title>
 </head>
-<body>
-  <h1 class="main-title col-md-5 col-md-offset-4">Address Book App</h1>
-
-  <div><button type="submit" class="btn btn-success col-md-4 col-md-offset-1">View All Contacts</button></div>
-  <div><button type="submit" class="btn btn-info col-md-4 col-md-offset-1">Add New Contact</button></div>
-
+<body ng-app="AddressApp">
+  <h1 class="main-title col-md-4 col-md-offset-5">Address Book App</h1>
+<div ng-controller="ContactsCtrl">
+  <div><button class="btn btn-success col-md-4 col-md-offset-1" ng-click="allContacts()">View All Contacts</button></div>
+  <div><button class="btn btn-info col-md-4 col-md-offset-2" ng-click="newContact()">Add New Contact</button></div>
+<div ng-show="!showContactsView">
   <form>
 
-  <div class="form-group col-md-10"> <!-- Full Name -->
-    <label for="full_name_id" class="control-label">Full Name</label>
-    <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="John Deer">
-  </div>  
+      <div class="form-group col-md-4 col-md-offset-1"> <!-- First Name -->
+        <label for="first_name" class="control-label">First Name</label>
+        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="John" ng-model="newContact.firstName">
+      </div> 
 
-  <div class="form-group col-md-10"> <!-- Street 1 -->
-    <label for="street1_id" class="control-label">Street Address 1</label>
-    <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, company name, c/o">
-  </div>          
-              
-  <div class="form-group col-md-10"> <!-- Street 2 -->
-    <label for="street2_id" class="control-label">Street Address 2</label>
-    <input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc.">
-  </div>  
+      <div class="form-group col-md-4 col-md-offset-1"> <!-- Last Name -->
+        <label for="last_name" class="control-label">Last Name</label>
+        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Smith" ng-model="newContact.lastName">
+      </div>  
 
-  <div class="form-group col-md-4"> <!-- City-->
-    <label for="city_id" class="control-label">City</label>
-    <input type="text" class="form-control" id="city_id" name="city" placeholder="Nashville">
-  </div>                  
-              
-  <div class="form-group col-md-4"> <!-- State Button -->
-    <label for="state_id" class="control-label">State</label>
-    <select class="form-control" id="state_id">
-      <option value="AL">Alabama</option>
-      <option value="AK">Alaska</option>
-      <option value="AZ">Arizona</option>
-      <option value="AR">Arkansas</option>
-      <option value="CA">California</option>
-      <option value="CO">Colorado</option>
-      <option value="CT">Connecticut</option>
-      <option value="DE">Delaware</option>
-      <option value="DC">District Of Columbia</option>
-      <option value="FL">Florida</option>
-      <option value="GA">Georgia</option>
-      <option value="HI">Hawaii</option>
-      <option value="ID">Idaho</option>
-      <option value="IL">Illinois</option>
-      <option value="IN">Indiana</option>
-      <option value="IA">Iowa</option>
-      <option value="KS">Kansas</option>
-      <option value="KY">Kentucky</option>
-      <option value="LA">Louisiana</option>
-      <option value="ME">Maine</option>
-      <option value="MD">Maryland</option>
-      <option value="MA">Massachusetts</option>
-      <option value="MI">Michigan</option>
-      <option value="MN">Minnesota</option>
-      <option value="MS">Mississippi</option>
-      <option value="MO">Missouri</option>
-      <option value="MT">Montana</option>
-      <option value="NE">Nebraska</option>
-      <option value="NV">Nevada</option>
-      <option value="NH">New Hampshire</option>
-      <option value="NJ">New Jersey</option>
-      <option value="NM">New Mexico</option>
-      <option value="NY">New York</option>
-      <option value="NC">North Carolina</option>
-      <option value="ND">North Dakota</option>
-      <option value="OH">Ohio</option>
-      <option value="OK">Oklahoma</option>
-      <option value="OR">Oregon</option>
-      <option value="PA">Pennsylvania</option>
-      <option value="RI">Rhode Island</option>
-      <option value="SC">South Carolina</option>
-      <option value="SD">South Dakota</option>
-      <option value="TN">Tennessee</option>
-      <option value="TX">Texas</option>
-      <option value="UT">Utah</option>
-      <option value="VT">Vermont</option>
-      <option value="VA">Virginia</option>
-      <option value="WA">Washington</option>
-      <option value="WV">West Virginia</option>
-      <option value="WI">Wisconsin</option>
-      <option value="WY">Wyoming</option>
-    </select>         
+      <div class="form-group col-md-10 col-md-offset-1"> <!-- Street 1 -->
+        <label for="street1_id" class="control-label">Street Address 1</label>
+        <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, company name, c/o" ng-model="newContact.streetAddress">
+      </div>          
+
+      <div class="form-group col-md-10 col-md-offset-1"> <!-- Street 2 -->
+        <label for="street2_id" class="control-label">Street Address 2</label>
+        <input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc.">
+      </div>  
+
+      <div class="form-group col-md-3 col-md-offset-1"> <!-- City-->
+        <label for="city_id" class="control-label">City</label>
+        <input type="text" class="form-control" id="city_id" name="city" placeholder="Nashville" ng-model="newContact.city">
+      </div>                  
+
+      <div class="form-group col-md-3 col-md-offset-1"> <!-- State Button -->
+        <label for="state_id" class="control-label">State</label>
+        <select class="form-control" id="state_id" ng-model="newContact.state">
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="DC">District Of Columbia</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select>         
+      </div>
+
+      <div class="form-group col-md-2 col-md-offset-1"> <!-- Zip Code-->
+        <label for="zip_id" class="control-label">Zip Code</label>
+        <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####" ng-model="newContact.zipcode">
+      </div>  
+
+      <div class="form-group col-md-3 col-md-offset-1"> <!-- Phone-->
+        <label for="phone_id" class="control-label">Phone</label>
+        <input type="text" class="form-control" id="phone_id" name="phone" placeholder="555-555-5555" ng-model="newContact.phone">
+      </div>  
+
+      <div class="form-group col-md-5 col-md-offset-1"> <!-- Email-->
+        <label for="email_id" class="control-label">E-mail</label>
+        <input id="email" name="email" type="text" placeholder="Email Address" class="form-control" ng-model="newContact.email">
+      </div>
+
+      <div class="form-group col-md-5 col-md-offset-5"> <!-- Submit Button -->
+        <button type="button" class="btn btn-danger" ng-click="addNewContact()">Submit Contact</button>
+      </div>     
+
+    </form> 
   </div>
-  
-  <div class="form-group col-md-4"> <!-- Zip Code-->
-    <label for="zip_id" class="control-label">Zip Code</label>
-    <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####">
-  </div>  
 
-  <div class="form-group col-md-4"> <!-- Phone-->
-    <label for="phone_id" class="control-label">Phone</label>
-    <input type="text" class="form-control" id="phone_id" name="phone" placeholder="555-555-5555">
-  </div>  
+  <div ng-show="showContactsView" ng-repeat="contact in contacts">
+    <!-- <h3>My Contacts</h3> -->
 
-  <div class="form-group col-md-6"> <!-- Email-->
-    <label for="email_id" class="control-label">E-mail</label>
-    <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+    <div class="col-md-3">{{contact.firstName}}</div>
+    <div class="col-md-3">{{contact.lastName}}</div>
+    <div class="col-md-3">{{contact.streetAddress}}</div>
+    <div class="col-md-3">{{contact.city}}</div>
+    <div class="col-md-3">{{contact.state}}</div>
+    <div class="col-md-3">{{contact.zipcode}}</div>
+    <div class="col-md-3">{{contact.phone}}</div>
+    <div class="col-md-3">{{contact.email}}</div>
   </div>
- 
-  <div class="form-group col-md-5"> <!-- Submit Button -->
-    <button type="submit" class="btn btn-danger">Submit Contact</button>
-  </div>     
-  
-</form>     
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+<script type="text/javascript" src="/lib/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/lib/bower_components/angular/angular.min.js" type="text/javascript"></script>
+<script src="/javascripts/app.js" type="text/javascript"></script>
+<script src="/javascripts/AppConstants.js"></script>
+<script src="/javascripts/AppConfig.js"></script>
+<script src="/javascripts/factories/AddressFactory.js"></script>
+<script src="/javascripts/controllers/ContactsCtrl.js"></script>
 </body>
-  <!-- <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script> -->
-  <script type="text/javascript" src="/lib/bower_components/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="/lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="/lib/bower_components/angular/angular.min.js" type="text/javascript"></script>
-  <script src="/javascripts/app.js" type="text/javascript"></script>
-  <script src="/javascripts/AppConstants.js"></script>
-  <script src="/javascripts/AppConfig.js"></script>
-  <script src="/javascripts/factories/AddressFactory.js"></script>
-  <script src="/javascripts/controllers/NavCtrl.js"></script>
-  <script src="/javascripts/controllers/ContactCtrl.js"></script>
 </html>
