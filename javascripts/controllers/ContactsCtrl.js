@@ -18,7 +18,7 @@ getContacts();
   console.log("you clicked show all contacts");
   $scope.showContactsView = true;
  }
- $scope.newContact = function(){
+ $scope.newContactForm = function(){
   console.log("you clicked add new contact");
   $scope.showContactsView = false;
  }

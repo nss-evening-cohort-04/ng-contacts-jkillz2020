@@ -20,18 +20,18 @@ app.factory('AddressFactory', function($q, $http, FIREBASE_CONFIG){
     })
   }
 
-  var postNewContact = function(){
+  var postNewContact = function(newContact){
     return $q((resolve, reject)=>{
       $http.post(`${FIREBASE_CONFIG.databaseURL}/Contacts.json`,
         JSON.stringify({
+          city: newContact.city,
+          email: newContact.email,
           firstName: newContact.firstName,
           lastName: newContact.lastName,
-          streetAddress: newContact.streetAddress,
-          city: newContact.city,
-          state: newContact.state,
-          zipcode: newContact.zipcode,
           phone: newContact.phone,
-          email: newContact.email,
+          state: newContact.state,
+          streetAddress: newContact.streetAddress,
+          zipcode: newContact.zipcode,
         })
       )
         .success(function(postResponse){
