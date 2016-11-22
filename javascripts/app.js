@@ -1,3 +1,3 @@
 "use strict";
 
-var app = angular.module('AddressApp', []);
+var app = angular.module('AddressApp', ["ngRoute"]);

@@ -43,8 +43,57 @@ app.factory('AddressFactory', function($q, $http, FIREBASE_CONFIG){
     })
   }
 
+  var deleteContact =  function(contactId){
+    return $q((resolve, reject) => {
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/Contacts/${contactId}.json`)
+      .success(function(deleteResponse){
+        console.log("success")
+        resolve(deleteResponse);
+      })
+      .error(function(deleteError){
+        reject(deleteError);
+      })
+    })
+  }
+
+  var getSingleContact =  function(contactId){
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/Contacts/${contactId}.json`)
+      .success(function(getSingleResponse){
+        console.log("success", getSingleResponse)
+        resolve(getSingleResponse);
+      })
+      .error(function(getSingleError){
+        reject(getSingleError);
+      })
+    })
+  }
+
+
+var editContact = function(editContact){
+    return $q((resolve, reject)=>{
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/Contacts/${editContact.id}.json`, 
+        JSON.stringify({
+        assignedTo: editItem.assignedTo,
+        isCompleted: editItem.isCompleted,
+        task: editItem.task
+      })
+    )
+      .success(function(editResponse){
+        resolve(editResponse);
+      })
+      .error(function(editError){
+        reject(editError);
+      })
+    })
+  }
+
 
   return {getContactList:getContactList,
-          postNewContact:postNewContact}
+          postNewContact:postNewContact,
+          deleteContact:deleteContact,
+          getSingleContact:getSingleContact,
+          editContact:editContact
+        }
      
 });
