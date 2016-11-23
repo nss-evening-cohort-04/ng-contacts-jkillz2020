@@ -1,0 +1,23 @@
+{
+  "name": "lib",
+  "homepage": "https://github.com/nss-evening-cohort-04/ng-contacts-jkillz2020",
+  "authors": [
+    "jkillz2020 <kilgore.josh@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "angular-route": "^1.5.8"
+  }
+}
