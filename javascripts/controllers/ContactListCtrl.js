@@ -1,24 +1,15 @@
 "use strict";
 
-app.controller("ContactListCtrl", function($scope, AddressFactory){
+app.controller("ContactListCtrl", function($scope, $rootScope, AddressFactory){
   $scope.contacts = [];
 
   let getContacts = function(){
-    AddressFactory.getContactList().then(function(fbContacts){
+    AddressFactory.getContactList($rootScope.user.uid).then(function(fbContacts){
       $scope.contacts=fbContacts;
   })
 }
 
 getContacts();
-
-
-  $scope.addNewContact = function(){
-    AddressFactory.postNewContact($scope.newContact).then(function(contactId){
-    getContacts();
-    $scope.newContact= {};
-    $scope.showListView = true;
-    })
-  }
 
   $scope.deleteContact = function(contactId){
     console.log("you deleted contact", contactId);

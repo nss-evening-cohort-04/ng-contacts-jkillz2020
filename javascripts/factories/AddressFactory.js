@@ -2,9 +2,9 @@
 
 app.factory('AddressFactory', function($q, $http, FIREBASE_CONFIG){
 
-  var getContactList=function(){
+  var getContactList=function(userId){
     return $q((resolve, reject)=>{
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/Contacts.json`)
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/Contacts.json?orderBy="uid"&equalTo="${userId}"`)
         .success(function(response){
           console.log("response", response)
           let contacts =[];
@@ -32,6 +32,7 @@ app.factory('AddressFactory', function($q, $http, FIREBASE_CONFIG){
           state: newContact.state,
           streetAddress: newContact.streetAddress,
           zipcode: newContact.zipcode,
+          uid: newContact.uid
         })
       )
         .success(function(postResponse){
@@ -74,9 +75,15 @@ var editContact = function(editContact){
     return $q((resolve, reject)=>{
       $http.put(`${FIREBASE_CONFIG.databaseURL}/Contacts/${editContact.id}.json`, 
         JSON.stringify({
-        assignedTo: editItem.assignedTo,
-        isCompleted: editItem.isCompleted,
-        task: editItem.task
+        city: editContact.city,
+          email: editContact.email,
+          firstName: editContact.firstName,
+          lastName: editContact.lastName,
+          phone: editContact.phone,
+          state: editContact.state,
+          streetAddress: editContact.streetAddress,
+          zipcode: editContact.zipcode,
+          uid: editContact.uid
       })
     )
       .success(function(editResponse){

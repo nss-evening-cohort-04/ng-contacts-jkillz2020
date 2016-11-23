@@ -8,7 +8,8 @@
       "state": "Tennessee",
       "zipcode": "55555",
       "phone": "123-456-7890",
-      "email": "t@t.com"
+      "email": "t@t.com",
+      "uid": "0awfuZBwhkT9Z6O8mfq26Lysz0a2"
     },
     "contact1":{
       "firstName": "Blair",
@@ -18,7 +19,8 @@
       "state": "Tennessee",
       "zipcode": "55577",
       "phone": "123-456-5555",
-      "email": "b@z.com"
+      "email": "b@z.com",
+      "uid": "0awfuZBwhkT9Z6O8mfq26Lysz0a2"
     },
     "contact2":{
       "firstName": "Jessica",
@@ -28,7 +30,18 @@
       "state": "Tennessee",
       "zipcode": "55566",
       "phone": "123-555-7590",
-      "email": "j@j.com"
+      "email": "j@j.com",
+      "uid": "mHZDlfbnMac6aDfZR0H5LYuI0942"
+      }
+    },
+    "users":{
+    "user0":{
+      "uid":"0awfuZBwhkT9Z6O8mfq26Lysz0a2",
+      "username": "josh"
+    },
+    "user1":{
+      "uid":"mHZDlfbnMac6aDfZR0H5LYuI0942",
+      "username": "a"
     }
-    }
+  }
   }

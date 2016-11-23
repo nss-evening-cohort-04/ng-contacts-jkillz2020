@@ -4,7 +4,7 @@ app.controller('NavCtrl', function($scope){
   $scope.navItems = [
     {
       name:"Logout",
-      url: "#/Logout"
+      url: "#/logout"
     }, 
     {
       name:"All Contacts",
